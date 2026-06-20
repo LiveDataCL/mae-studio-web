@@ -5,103 +5,114 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-<meta name="theme-color" content="#0f0d10"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#ffffff"/>
 <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no"/>
-<title>MAE Studio · Manicure, Pedicure & Cejas · Santiago</title>
-<meta property="og:type"        content="website"/>
-<meta property="og:url"         content="https://mae-studio.livedata.cl/"/>
-<meta property="og:site_name"   content="MAE Studio"/>
-<meta property="og:title"       content="MAE Studio · Manicure, Pedicure & Cejas"/>
-<meta property="og:description" content="Especialistas en manicure, pedicure y cejas. Servicio de excelencia con atención personalizada. Av. Alameda 949, Santiago."/>
-<meta property="og:locale"      content="es_CL"/>
+<title>MAE Studio · Manicure, Pedicure &amp; Cejas · Santiago</title>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://mae-studio.livedata.cl/"/>
+<meta property="og:site_name" content="MAE Studio"/>
+<meta property="og:title" content="MAE Studio · Manicure, Pedicure &amp; Cejas"/>
+<meta property="og:description" content="Especialistas en manicure, pedicure y cejas. Servicio de excelencia con atenci&#243;n personalizada. Av. Alameda 949, Santiago."/>
+<meta property="og:locale" content="es_CL"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
-body{font-family:'DM Sans',sans-serif;background:#0f0d10;color:#f5f0f4;overflow-x:clip;-webkit-font-smoothing:antialiased;max-width:480px;margin:0 auto}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#fff;color:#1a1020;
+  overflow-x:clip;-webkit-font-smoothing:antialiased;
+  max-width:480px;margin:0 auto;
+}
 ::-webkit-scrollbar{display:none}
 a{color:inherit;text-decoration:none}
 button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:none}
 img{display:block;max-width:100%}
 
-/* ── DESIGN TOKENS ── */
+/* Light theme tokens — page only; sheets use hardcoded dark values */
 :root{
-  --bg:#0f0d10;--s1:#181620;--s2:#221f27;--s3:#2d2935;
-  --border:#3a3444;--border2:#4e4660;
-  --rose:#c9a4c0;--rose2:#e8d1e4;--roseDk:#7e5278;--rosePale:rgba(201,164,192,.1);
-  --text:#f5f0f4;--text2:#9c8899;--text3:#5e5265;
+  --bg:#fff;
+  --s1:#fdf5f9;
+  --s2:#f7ecf5;
+  --s3:#f0dde9;
+  --border:#e8d4e4;
+  --border2:#d4a8c8;
+  --rose:#7e5278;      /* 6.2:1 on white - WCAG AA */
+  --rose2:#c9a4c0;     /* decorative only */
+  --roseDk:#5d2f50;    /* CTA bg — 9.7:1 with white text */
+  --rosePale:rgba(201,164,192,.10);
+  --text:#1a1020;
+  --text2:#5c4458;
+  --text3:#9c7a94;
 }
 
-/* ── SERVICE PICKER SHEET ── */
+/* ── SERVICE PICKER SHEET (dark overlay modal) ── */
 #sp-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:800}
 #sp-ov.on{display:block}
 #sp-sheet{
   display:none;position:fixed;bottom:0;left:0;right:0;z-index:801;
-  background:var(--s1);border-radius:22px 22px 0 0;
+  background:#151219;border-radius:22px 22px 0 0;
   border-top:1px solid rgba(201,164,192,.22);
   max-height:91dvh;overflow:hidden;
   flex-direction:column;max-width:480px;margin:0 auto;
 }
 #sp-sheet.on{display:flex;animation:slideUp .26s cubic-bezier(.4,0,.2,1)}
 .sp-handle{width:38px;height:4px;background:rgba(255,255,255,.14);border-radius:2px;margin:12px auto 4px;flex-shrink:0}
-.sp-hdr{padding:14px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;flex-shrink:0}
+.sp-hdr{padding:14px 20px 12px;border-bottom:1px solid rgba(201,164,192,.14);display:flex;align-items:center;gap:14px;flex-shrink:0}
 .sp-av{
   width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;
   border:2px solid rgba(201,164,192,.35);
   display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:16px;color:var(--bg);
+  font-weight:700;font-size:16px;
 }
 .sp-av img{width:100%;height:100%;object-fit:cover;object-position:top}
 .sp-hdr-text{flex:1}
-.sp-hdr-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--text);line-height:1.1}
-.sp-hdr-sub{font-size:10px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:.08em}
-.sp-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);color:var(--text3);font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:background .12s}
-.sp-close:hover{background:rgba(255,255,255,.14);color:var(--text)}
-
-/* Category tabs */
+.sp-hdr-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#f5f0f4;line-height:1.1}
+.sp-hdr-sub{font-size:10px;color:rgba(245,240,244,.42);margin-top:2px;text-transform:uppercase;letter-spacing:.08em}
+.sp-close{
+  width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);
+  color:rgba(245,240,244,.45);font-size:17px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;cursor:pointer;transition:background .12s;
+}
+.sp-close:hover{background:rgba(255,255,255,.14);color:#f5f0f4}
 .sp-cats{
   display:flex;gap:6px;overflow-x:auto;padding:12px 16px 10px;
-  border-bottom:1px solid var(--border);flex-shrink:0;
-  scrollbar-width:none;
+  border-bottom:1px solid rgba(201,164,192,.10);flex-shrink:0;scrollbar-width:none;
 }
 .sp-cats::-webkit-scrollbar{display:none}
 .sp-cat{
   flex-shrink:0;padding:7px 14px;border-radius:20px;
   font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--text3);background:transparent;
-  border:1px solid var(--border);cursor:pointer;
+  color:rgba(245,240,244,.38);background:transparent;
+  border:1px solid rgba(201,164,192,.12);cursor:pointer;
   transition:all .15s;white-space:nowrap;
 }
-.sp-cat.active{
-  background:rgba(201,164,192,.12);border-color:rgba(201,164,192,.45);color:var(--rose);
-}
-
-/* Service list */
+.sp-cat.active{background:rgba(201,164,192,.12);border-color:rgba(201,164,192,.45);color:#c9a4c0}
 .sp-list{padding:10px 14px 32px;display:flex;flex-direction:column;gap:6px;overflow-y:auto}
 .sp-row{
-  display:flex;align-items:center;gap:12px;padding:14px 14px;
-  background:var(--s2);border:1px solid var(--border);
-  border-radius:13px;cursor:pointer;
-  transition:border-color .12s,background .12s;
-  -webkit-tap-highlight-color:transparent;
+  display:flex;align-items:center;gap:12px;padding:14px;
+  background:#1d1922;border:1px solid rgba(201,164,192,.10);
+  border-radius:14px;cursor:pointer;
+  transition:border-color .12s,background .12s;-webkit-tap-highlight-color:transparent;
 }
-.sp-row:active,.sp-row:hover{border-color:rgba(201,164,192,.4);background:var(--s3)}
+.sp-row:active,.sp-row:hover{border-color:rgba(201,164,192,.38);background:#25212e}
 .sp-row-info{flex:1;min-width:0}
-.sp-row-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.2}
-.sp-row-dur{font-size:11px;color:var(--text3);margin-top:2px}
+.sp-row-name{font-size:14px;font-weight:600;color:#f5f0f4;line-height:1.2}
+.sp-row-dur{font-size:11px;color:rgba(245,240,244,.36);margin-top:2px}
 .sp-row-price{
   font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
-  color:var(--rose);white-space:nowrap;flex-shrink:0;text-align:right;line-height:1.1;
+  color:#c9a4c0;white-space:nowrap;flex-shrink:0;text-align:right;line-height:1.1;
 }
-.sp-row-desde{display:block;font-size:9px;font-family:'DM Sans',sans-serif;color:var(--text3);text-align:right;text-transform:uppercase;letter-spacing:.08em}
+.sp-row-desde{display:block;font-size:9px;font-family:'DM Sans',sans-serif;color:rgba(245,240,244,.36);text-align:right;text-transform:uppercase;letter-spacing:.08em}
 
-/* ── BOOKING SHEET ── */
+/* ── BOOKING SHEET (dark overlay modal) ── */
 #bk-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:900}
 #bk-ov.on{display:block}
 #bk-sheet{
   display:none;position:fixed;bottom:0;left:0;right:0;z-index:901;
-  background:var(--s1);border-radius:22px 22px 0 0;
+  background:#151219;border-radius:22px 22px 0 0;
   border-top:1px solid rgba(201,164,192,.22);
   max-height:88dvh;overflow-y:auto;
   max-width:480px;margin:0 auto;
@@ -109,136 +120,169 @@ img{display:block;max-width:100%}
 #bk-sheet.on{display:block;animation:slideUp .26s cubic-bezier(.4,0,.2,1)}
 .bk-handle{width:38px;height:4px;background:rgba(255,255,255,.14);border-radius:2px;margin:12px auto 0}
 .bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px}
-.bk-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rose)}
-.bk-close{color:var(--text3);font-size:20px;cursor:pointer;padding:2px 0;transition:color .12s}
-.bk-close:hover{color:var(--text)}
+.bk-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9a4c0}
+.bk-close{color:rgba(245,240,244,.4);font-size:20px;cursor:pointer;padding:2px 0;transition:color .12s}
+.bk-close:hover{color:#f5f0f4}
 .bk-svc-card{
   margin:0 16px 14px;padding:14px 16px;
-  background:var(--s2);border:1px solid var(--border);border-radius:14px;
+  background:#1d1922;border:1px solid rgba(201,164,192,.12);border-radius:14px;
 }
-.bk-svc-nm{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px}
+.bk-svc-nm{font-size:16px;font-weight:700;color:#f5f0f4;margin-bottom:6px}
 .bk-svc-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
-.bk-svc-meta{font-size:11px;color:var(--text3)}
-.bk-svc-price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--rose)}
+.bk-svc-meta{font-size:11px;color:rgba(245,240,244,.38)}
+.bk-svc-price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#c9a4c0}
 .bk-pro-row{
   margin:0 16px 16px;padding:12px 14px;
-  background:var(--s2);border:1px solid var(--border);border-radius:12px;
+  background:#1d1922;border:1px solid rgba(201,164,192,.12);border-radius:12px;
   display:flex;align-items:center;gap:10px;
 }
 .bk-pro-av{
   width:36px;height:36px;border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:700;color:var(--bg);
-  border:1.5px solid rgba(201,164,192,.3);
+  font-size:13px;font-weight:700;
+  border:1.5px solid rgba(201,164,192,.28);
 }
-.bk-pro-name{font-size:13px;font-weight:600;color:var(--text)}
-.bk-pro-role{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em}
+.bk-pro-name{font-size:13px;font-weight:600;color:#f5f0f4}
+.bk-pro-role{font-size:10px;color:rgba(245,240,244,.36);text-transform:uppercase;letter-spacing:.07em}
 .bk-form{padding:0 16px 4px}
 .bk-field{margin-bottom:14px}
-.bk-lbl{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.bk-lbl{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,244,.4);margin-bottom:6px}
 .bk-inp{
-  width:100%;padding:13px 14px;border-radius:11px;
-  background:var(--s2);border:1px solid var(--border);
-  color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;
-  -webkit-appearance:none;appearance:none;outline:none;
-  transition:border-color .15s;
+  width:100%;padding:13px 14px;border-radius:12px;
+  background:#1d1922;border:1px solid rgba(201,164,192,.14);
+  color:#f5f0f4;font-size:14px;font-family:'DM Sans',sans-serif;
+  -webkit-appearance:none;appearance:none;outline:none;transition:border-color .15s;
 }
-.bk-inp:focus{border-color:rgba(201,164,192,.5)}
-.bk-inp::placeholder{color:var(--text3)}
+.bk-inp:focus{border-color:rgba(201,164,192,.48)}
+.bk-inp::placeholder{color:rgba(245,240,244,.22)}
 .bk-inp.err{border-color:rgba(220,80,80,.5)}
 .bk-foot{padding:6px 16px 36px;display:flex;flex-direction:column;gap:10px}
 .bk-confirm{
-  padding:15px 20px;border-radius:13px;
+  padding:15px 20px;border-radius:14px;
   background:#25D366;color:#fff;
   font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   display:flex;align-items:center;justify-content:center;gap:10px;
-  box-shadow:0 4px 20px rgba(37,211,102,.32);
-  transition:opacity .15s;
+  box-shadow:0 4px 20px rgba(37,211,102,.32);transition:opacity .15s;
 }
 .bk-confirm:active{opacity:.85}
 .bk-cancel{
   padding:13px;border-radius:12px;
-  border:1px solid var(--border);
-  color:var(--text3);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid rgba(245,240,244,.12);
+  color:#a8a0b0;
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   transition:border-color .12s,color .12s;
 }
-.bk-cancel:active{color:var(--text);border-color:var(--border2)}
+.bk-cancel:active{color:#f5f0f4;border-color:rgba(245,240,244,.25)}
 
 /* ── WHATSAPP FAB ── */
 .wa-fab{
   position:fixed;bottom:20px;right:16px;z-index:500;
-  width:56px;height:56px;border-radius:50%;
-  background:#25D366;
+  width:56px;height:56px;border-radius:50%;background:#25D366;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 20px rgba(37,211,102,.4);
 }
+.wa-ic{width:26px;height:26px;fill:#fff}
 
-/* ── BRAND ── */
-.brand{
-  text-align:center;padding:36px 24px 28px;
-  border-bottom:1px solid rgba(201,164,192,.12);
+/* ── HERO ── */
+.hero{
+  position:relative;height:380px;overflow:hidden;
+  background:var(--s3);
 }
-.brand-ey{
-  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
-  color:rgba(201,164,192,.75);margin-bottom:22px;
+.hero-img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;
 }
-.brand-name{
+.hero-fade-top{
+  position:absolute;top:0;left:0;right:0;height:90px;
+  background:linear-gradient(to bottom,rgba(15,10,20,.52),transparent);
+  pointer-events:none;
+}
+.hero-fade{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(15,10,20,.90) 0%,
+    rgba(15,10,20,.55) 42%,
+    transparent 68%
+  );
+  pointer-events:none;
+}
+.hero-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:0 28px 32px;text-align:center;
+}
+.hero-tagline{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.68);margin-bottom:8px;
+}
+.hero-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:52px;font-weight:600;letter-spacing:.05em;
-  color:var(--text);line-height:1;margin-bottom:10px;
+  font-size:54px;font-weight:600;letter-spacing:.04em;
+  color:#fff;line-height:1;margin-bottom:6px;
+  text-shadow:0 2px 24px rgba(10,6,14,.45);
 }
-.brand-name span{color:var(--rose)}
-.brand-tagline{
-  font-size:12px;color:var(--text2);letter-spacing:.06em;margin-bottom:18px;
+.hero-name span{color:rgba(233,200,228,.9)}
+.hero-stars{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  margin-bottom:22px;
 }
-.brand-stars{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  font-size:13px;
+.hero-star{color:#e8c9e0;font-size:13px;letter-spacing:1.5px}
+.hero-rev{font-size:10px;color:rgba(255,255,255,.55)}
+.hero-cta{
+  display:inline-block;
+  padding:14px 36px;border-radius:14px;
+  background:#fff;color:#5d2f50;
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  box-shadow:0 4px 20px rgba(0,0,0,.22);transition:opacity .15s;
 }
-.brand-star{color:var(--rose);font-size:14px;letter-spacing:2px}
-.brand-rev{font-size:11px;color:var(--text3)}
+.hero-cta:active{opacity:.86}
 
 /* ── INFO STRIP ── */
 .info-strip{
   display:grid;grid-template-columns:1fr 1fr 1fr;
-  border-top:1px solid rgba(201,164,192,.1);
-  border-bottom:1px solid rgba(201,164,192,.1);
+  border-bottom:1px solid var(--border);
 }
-.info-cell{
-  background:var(--bg);padding:16px 10px;text-align:center;
-  position:relative;
-}
+.info-cell{padding:16px 8px;text-align:center;position:relative}
 .info-cell:not(:last-child)::after{
   content:'';position:absolute;right:0;top:20%;bottom:20%;
-  width:1px;background:rgba(201,164,192,.1);
+  width:1px;background:var(--border);
 }
-.info-ic{font-size:18px;margin-bottom:5px}
-.info-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(201,164,192,.7);margin-bottom:3px}
-.info-val{font-size:11px;font-weight:600;color:var(--text);line-height:1.35}
+.info-ic{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--s1);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 6px;
+}
+.info-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
+.info-val{font-size:11px;font-weight:600;color:var(--text);line-height:1.4}
 
-/* ── DESCRIPTION / ABOUT ── */
-.about-sec{padding:28px 22px 0}
+/* ── ABOUT ── */
+.about-sec{
+  padding:28px 26px;
+  border-bottom:1px solid var(--border);
+}
 .about-txt{
-  font-size:14px;color:var(--text2);line-height:1.7;
-  font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px;
-  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;color:var(--text2);line-height:1.65;
+  font-style:italic;text-align:center;
+  padding-bottom:4px;
 }
 
 /* ── MAIN CTA ── */
 .main-cta-wrap{padding:24px 20px 28px}
 .main-cta{
   width:100%;padding:17px 20px;border-radius:14px;
-  background:var(--rose);color:var(--bg);
+  background:var(--roseDk);color:#fff;
   font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   transition:opacity .15s;
+  box-shadow:0 6px 24px rgba(93,47,80,.28);
 }
-.main-cta:active{opacity:.82}
+.main-cta:active{opacity:.86}
 
 /* ── SECTION HEADER ── */
 .sec{padding:28px 20px}
 .sec-ey{
   font-size:10px;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(201,164,192,.6);text-align:center;margin-bottom:8px;
+  color:var(--rose2);text-align:center;margin-bottom:8px;
 }
 .sec-t{
   font-family:'Cormorant Garamond',serif;
@@ -247,7 +291,7 @@ img{display:block;max-width:100%}
 }
 .sec-sep{
   width:40px;height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--rose),transparent);
+  background:linear-gradient(90deg,transparent,var(--rose2),transparent);
   margin:12px auto 20px;
 }
 
@@ -255,8 +299,7 @@ img{display:block;max-width:100%}
 .pros-scroll{
   display:flex;gap:12px;overflow-x:auto;
   padding:4px 20px 12px;margin:0 -20px;
-  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
 }
 .pros-scroll::-webkit-scrollbar{display:none}
 .pc{
@@ -270,16 +313,15 @@ img{display:block;max-width:100%}
 .pc:hover,.pc.focus{transform:scale(1);opacity:1;border-color:var(--border2)}
 .pc.sel{
   transform:scale(1.06) !important;opacity:1 !important;
-  border-color:var(--rose) !important;
-  background:var(--rosePale);
-  box-shadow:0 0 0 1px rgba(201,164,192,.3),0 12px 36px rgba(201,164,192,.16),0 4px 18px rgba(0,0,0,.55);
+  border-color:var(--rose2) !important;
+  background:#fff;
+  box-shadow:0 0 0 1px rgba(201,164,192,.35),0 12px 36px rgba(201,164,192,.2),0 4px 18px rgba(93,47,80,.07);
 }
-.pc.dim{transform:scale(.9) !important;opacity:.3 !important;border-color:rgba(201,164,192,.06) !important;box-shadow:none !important}
+.pc.dim{transform:scale(.9) !important;opacity:.28 !important;border-color:rgba(201,164,192,.08) !important;box-shadow:none !important}
 .pc-av{
   width:110px;height:110px;border-radius:50%;margin:0 auto 12px;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;
-  border:2.5px solid var(--rose);
+  border:2.5px solid rgba(201,164,192,.45);
   box-shadow:0 0 22px rgba(201,164,192,.18);
 }
 .pc-av img{width:100%;height:100%;object-fit:cover;object-position:top}
@@ -294,22 +336,54 @@ img{display:block;max-width:100%}
   color:var(--text3);padding:7px 10px;border-radius:8px;border:1px solid var(--border);
   transition:border-color .12s,color .12s;
 }
-.pc.sel .pc-cta{border-color:rgba(201,164,192,.4);color:var(--rose)}
+.pc.sel .pc-cta{border-color:var(--rose2);color:var(--rose)}
+
+/* ── GALLERY ── */
+.gallery-sec{
+  border-top:1px solid var(--border);
+  padding-bottom:8px;
+}
+.gallery-header{padding:28px 20px 0}
+.gal-scroll{
+  display:flex;gap:12px;overflow-x:auto;
+  padding:16px 20px 24px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.gal-scroll::-webkit-scrollbar{display:none}
+.gal-item{
+  flex:0 0 200px;scroll-snap-align:start;
+  height:265px;border-radius:16px;overflow:hidden;
+  position:relative;flex-shrink:0;
+  box-shadow:0 4px 20px rgba(93,47,80,.10);
+  background:var(--s3);
+}
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  transition:transform .3s ease;
+}
+.gal-item:active img{transform:scale(1.04)}
+.gal-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:28px 14px 14px;
+  background:linear-gradient(to top,rgba(93,47,80,.75),transparent);
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.92);
+}
 
 /* ── CONNECT LINKS ── */
 .connect-links{display:flex;flex-direction:column;gap:10px}
 .cl{
   display:flex;align-items:center;gap:14px;
   background:var(--s1);border:1px solid var(--border);
-  border-radius:13px;padding:14px 16px;
+  border-radius:14px;padding:14px 16px;
   font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--rose);cursor:pointer;transition:background .12s;
+  color:var(--rose);cursor:pointer;transition:background .12s,border-color .12s;
 }
-.cl:active{background:var(--s2)}
+.cl:active{background:var(--s2);border-color:var(--border2)}
 .cl-ic{
   width:40px;height:40px;border-radius:50%;
-  background:rgba(201,164,192,.08);border:1px solid rgba(201,164,192,.2);
-  display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;
+  background:var(--s2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .cl-info{display:flex;flex-direction:column;gap:2px;flex:1}
 .cl-val{font-size:12px;color:var(--text);font-weight:500;letter-spacing:.01em;text-transform:none}
@@ -320,19 +394,19 @@ img{display:block;max-width:100%}
   border-top:1px solid var(--border);margin-top:8px;
 }
 .footer-txt{font-size:10px;color:var(--text3);letter-spacing:.08em}
-.footer-brand{color:rgba(201,164,192,.4);font-weight:600}
+.footer-brand{color:var(--rose2);font-weight:600}
 
-/* ── ANIMATION ── */
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 
-/* WhatsApp SVG icon */
-.wa-ic{width:26px;height:26px;fill:#fff}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
 </style>
 </head>
 <body>
 
 <!-- WhatsApp FAB -->
-<a class="wa-fab" href="https://wa.me/56964073320" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<a class="wa-fab" href="https://wa.me/56964073320" target="_blank" rel="noopener" aria-label="Escribenos por WhatsApp">
   <svg class="wa-ic" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
 </a>
 
@@ -346,7 +420,7 @@ img{display:block;max-width:100%}
       <div class="sp-hdr-title" id="sp-pro-name">Todos los servicios</div>
       <div class="sp-hdr-sub" id="sp-pro-role">Elige tu servicio</div>
     </div>
-    <button class="sp-close" onclick="closeSP()" aria-label="Cerrar">✕</button>
+    <button class="sp-close" onclick="closeSP()" aria-label="Cerrar">&#x2715;</button>
   </div>
   <div class="sp-cats" id="sp-cats"></div>
   <div class="sp-list" id="sp-list"></div>
@@ -358,23 +432,23 @@ img{display:block;max-width:100%}
   <div class="bk-handle"></div>
   <div class="bk-hdr">
     <span class="bk-title">Reservar</span>
-    <button class="bk-close" onclick="closeBK()" aria-label="Cerrar">✕</button>
+    <button class="bk-close" onclick="closeBK()" aria-label="Cerrar">&#x2715;</button>
   </div>
   <div class="bk-svc-card" id="bk-svc-card"></div>
   <div class="bk-pro-row" id="bk-pro-row"></div>
   <div class="bk-form">
     <div class="bk-field">
       <label class="bk-lbl" for="bk-name">Tu nombre</label>
-      <input id="bk-name" class="bk-inp" type="text" placeholder="Ej. María González" autocomplete="given-name"/>
+      <input id="bk-name" class="bk-inp" type="text" placeholder="Ej. Maria Gonzalez" autocomplete="given-name"/>
     </div>
     <div class="bk-field">
-      <label class="bk-lbl" for="bk-phone">Teléfono (opcional)</label>
-      <input id="bk-phone" class="bk-inp" type="tel" placeholder="+56 9 …" autocomplete="tel"/>
+      <label class="bk-lbl" for="bk-phone">Telefono (opcional)</label>
+      <input id="bk-phone" class="bk-inp" type="tel" placeholder="+56 9 ..." autocomplete="tel"/>
     </div>
   </div>
   <div class="bk-foot">
     <button class="bk-confirm" onclick="reservar()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
       Reservar por WhatsApp
     </button>
     <button class="bk-cancel" onclick="closeBK()">Cancelar</button>
@@ -384,40 +458,61 @@ img{display:block;max-width:100%}
 <!-- ── MAIN CONTENT ── -->
 <main>
 
-  <!-- Brand -->
-  <section class="brand">
-    <div class="brand-ey">Manicure · Pedicure · Cejas</div>
-    <div class="brand-name">MAE<span> Studio</span></div>
-    <div class="brand-tagline">Especialistas en belleza de uñas · Santiago Centro</div>
-    <div class="brand-stars">
-      <span class="brand-star">★★★★★</span>
-      <span class="brand-rev">5.0 · 12 reseñas Google</span>
+  <!-- Hero — replace picsum URL with a real MAE Studio photo when available -->
+  <section class="hero">
+    <img class="hero-img"
+      src="https://picsum.photos/seed/mae-studio-salon-beauty/480/560"
+      alt="MAE Studio - Salon de belleza en Santiago"
+      loading="eager" decoding="async"/>
+    <div class="hero-fade-top"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-content">
+      <div class="hero-tagline">Manicure &middot; Pedicure &middot; Cejas</div>
+      <div class="hero-name">MAE<span> Studio</span></div>
+      <div class="hero-stars">
+        <span class="hero-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="hero-rev">5.0 &middot; 12 rese&#241;as Google</span>
+      </div>
+      <button class="hero-cta" onclick="openSP(null)">Reservar ahora</button>
     </div>
   </section>
 
   <!-- Info strip -->
   <div class="info-strip">
     <div class="info-cell">
-      <div class="info-ic">📍</div>
-      <div class="info-lbl">Dirección</div>
+      <div class="info-ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7e5278" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <div class="info-lbl">Direcci&#243;n</div>
       <div class="info-val">Alameda 949<br>Santiago</div>
     </div>
     <div class="info-cell">
-      <div class="info-ic">✨</div>
-      <div class="info-lbl">Especialidad</div>
-      <div class="info-val">Uñas &<br>Belleza</div>
+      <div class="info-ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#c9a4c0" stroke="none" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div class="info-lbl">Calificaci&#243;n</div>
+      <div class="info-val">5.0 Google<br>12 rese&#241;as</div>
     </div>
     <div class="info-cell">
-      <div class="info-ic">📞</div>
+      <div class="info-ic">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7e5278" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.39 2 2 0 0 1 3.56 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.14-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
       <div class="info-lbl">Contacto</div>
       <div class="info-val">+56 9<br>6407 3320</div>
     </div>
   </div>
 
-  <!-- Description -->
+  <!-- About -->
   <section class="about-sec">
     <p class="about-txt">
-      MAE Studio es un salón especializado en manicure, pedicure y cejas, enfocado en brindar un servicio de excelencia, con atención personalizada y dedicación en cada detalle.
+      MAE Studio es un sal&#243;n especializado en manicure, pedicure y cejas, enfocado en brindar un servicio de excelencia, con atenci&#243;n personalizada y dedicaci&#243;n en cada detalle.
     </p>
   </section>
 
@@ -427,7 +522,7 @@ img{display:block;max-width:100%}
   </div>
 
   <!-- Profesionales -->
-  <section class="sec">
+  <section class="sec" style="border-top:1px solid var(--border)">
     <div class="sec-ey">Nuestro equipo</div>
     <div class="sec-t">Profesionales</div>
     <div class="sec-sep"></div>
@@ -437,14 +532,45 @@ img{display:block;max-width:100%}
     </p>
   </section>
 
+  <!-- Gallery — replace picsum images with real MAE Studio nail art photos -->
+  <section class="gallery-sec">
+    <div class="gallery-header">
+      <div class="sec-ey">Nuestro trabajo</div>
+      <div class="sec-t">Galer&#237;a</div>
+      <div class="sec-sep"></div>
+    </div>
+    <div class="gal-scroll">
+      <div class="gal-item">
+        <img src="https://picsum.photos/seed/mae-nail-art-design/400/530"
+          alt="Manicure - trabajo MAE Studio" loading="lazy"/>
+        <div class="gal-label">Manicure</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://picsum.photos/seed/mae-pedicure-spa-pink/400/530"
+          alt="Pedicure - trabajo MAE Studio" loading="lazy"/>
+        <div class="gal-label">Pedicure</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://picsum.photos/seed/mae-cejas-lifting-beauty/400/530"
+          alt="Cejas y Lifting - trabajo MAE Studio" loading="lazy"/>
+        <div class="gal-label">Cejas &amp; Lifting</div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
-  <section class="sec" style="padding-top:8px">
-    <div class="sec-ey">Encuéntranos</div>
+  <section class="sec" style="padding-top:8px;border-top:1px solid var(--border)">
+    <div class="sec-ey">Enc&#250;entranos</div>
     <div class="sec-t">Contacto</div>
     <div class="sec-sep"></div>
     <div class="connect-links">
       <a class="cl" href="https://maps.google.com/?q=Av+Alameda+949+Santiago+Chile" target="_blank" rel="noopener">
-        <div class="cl-ic">🗺</div>
+        <div class="cl-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7e5278" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
         <div class="cl-info">
           <span>Ver en Google Maps</span>
           <span class="cl-val">Av. Alameda Libertador B. O'Higgins 949</span>
@@ -452,7 +578,7 @@ img{display:block;max-width:100%}
       </a>
       <a class="cl" href="https://wa.me/56964073320" target="_blank" rel="noopener">
         <div class="cl-ic">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#c9a4c0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#7e5278" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
         </div>
         <div class="cl-info">
           <span>WhatsApp</span>
@@ -460,7 +586,11 @@ img{display:block;max-width:100%}
         </div>
       </a>
       <a class="cl" href="tel:+56964073320">
-        <div class="cl-ic">📞</div>
+        <div class="cl-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7e5278" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.39 2 2 0 0 1 3.56 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.14-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
         <div class="cl-info">
           <span>Llamar</span>
           <span class="cl-val">+56 9 6407 3320</span>
@@ -471,19 +601,18 @@ img{display:block;max-width:100%}
 
   <!-- Footer -->
   <footer class="footer">
-    <p class="footer-txt">MAE Studio · Santiago, Chile<br>
+    <p class="footer-txt">MAE Studio &middot; Santiago, Chile<br>
     <span class="footer-brand">Sistema por LiveData</span></p>
   </footer>
 
 </main>
 
 <script>
-// ── DATA ────────────────────────────────────────────────────────
 const PROS = [
-  { id:'p1', nombre:'Mari',     inicial:'M', color:'#c9a4c0', grad:'radial-gradient(circle at 35% 30%,#e8c9e3,#c9a4c0 52%,#8c6389)' },
-  { id:'p2', nombre:'Diosa',   inicial:'D', color:'#a8a4c9', grad:'radial-gradient(circle at 35% 30%,#c9c7e8,#a8a4c9 52%,#6b6389)' },
-  { id:'p3', nombre:'Caroline',inicial:'C', color:'#a4c4b8', grad:'radial-gradient(circle at 35% 30%,#c7e8dc,#a4c4b8 52%,#638977)' },
-  { id:'p4', nombre:'Lenyi',   inicial:'L', color:'#c9bca4', grad:'radial-gradient(circle at 35% 30%,#e8dac7,#c9bca4 52%,#897763)' },
+  { id:'p1', nombre:'Mari',     inicial:'M', grad:'radial-gradient(circle at 35% 30%,#e8c9e3,#c9a4c0 52%,#8c6389)' },
+  { id:'p2', nombre:'Diosa',   inicial:'D', grad:'radial-gradient(circle at 35% 30%,#c9c7e8,#a8a4c9 52%,#6b6389)' },
+  { id:'p3', nombre:'Caroline',inicial:'C', grad:'radial-gradient(circle at 35% 30%,#c7e8dc,#a4c4b8 52%,#638977)' },
+  { id:'p4', nombre:'Lenyi',   inicial:'L', grad:'radial-gradient(circle at 35% 30%,#e8dac7,#c9bca4 52%,#897763)' },
 ];
 
 const CATS = [
@@ -496,46 +625,44 @@ const CATS = [
 
 const SVCS = {
   manicure:[
-    { id:'acr-tips',       nom:'Acrílico con tips',          dur:80,  precio:22000, desde:true  },
-    { id:'acr-esculpido',  nom:'Acrílico esculpido',         dur:120, precio:25000, desde:true  },
-    { id:'bano-acr',       nom:'Baño acrílico + esmaltado',  dur:100, precio:20000, desde:false },
-    { id:'bano-poly',      nom:'Baño Polygel + esmaltado',   dur:100, precio:20000, desde:true  },
-    { id:'kapping',        nom:'Kapping',                    dur:90,  precio:20000, desde:false },
-    { id:'mani-perm',      nom:'Manicure Permanente',        dur:45,  precio:12000, desde:true  },
-    { id:'mani-brillo',    nom:'Manicure limpieza y brillo', dur:35,  precio:10000, desde:true  },
-    { id:'mani-vit',       nom:'Manicure Vitamina',          dur:60,  precio:15000, desde:true  },
-    { id:'poly-esculpido', nom:'Polygel esculpido',          dur:110, precio:25000, desde:false },
-    { id:'poly-tips',      nom:'Polygel tips',               dur:80,  precio:21990, desde:true  },
-    { id:'rubber',         nom:'Rubber Nivelación',          dur:60,  precio:20000, desde:true  },
-    { id:'softgel',        nom:'Softgel',                    dur:90,  precio:22000, desde:true  },
+    { id:'acr-tips',       nom:'Acr\xedlico con tips',          dur:80,  precio:22000, desde:true  },
+    { id:'acr-esculpido',  nom:'Acr\xedlico esculpido',         dur:120, precio:25000, desde:true  },
+    { id:'bano-acr',       nom:'Ba\xf1o acr\xedlico + esmaltado', dur:100, precio:20000, desde:false },
+    { id:'bano-poly',      nom:'Ba\xf1o Polygel + esmaltado',   dur:100, precio:20000, desde:true  },
+    { id:'kapping',        nom:'Kapping',                        dur:90,  precio:20000, desde:false },
+    { id:'mani-perm',      nom:'Manicure Permanente',            dur:45,  precio:12000, desde:true  },
+    { id:'mani-brillo',    nom:'Manicure limpieza y brillo',     dur:35,  precio:10000, desde:true  },
+    { id:'mani-vit',       nom:'Manicure Vitamina',              dur:60,  precio:15000, desde:true  },
+    { id:'poly-esculpido', nom:'Polygel esculpido',              dur:110, precio:25000, desde:false },
+    { id:'poly-tips',      nom:'Polygel tips',                   dur:80,  precio:21990, desde:true  },
+    { id:'rubber',         nom:'Rubber Nivelaci\xf3n',           dur:60,  precio:20000, desde:true  },
+    { id:'softgel',        nom:'Softgel',                        dur:90,  precio:22000, desde:true  },
   ],
   pedicure:[
-    { id:'pedicure',       nom:'Pedicure',        dur:50, precio:16000, desde:false },
+    { id:'pedicure',       nom:'Pedicure',         dur:50, precio:16000, desde:false },
     { id:'pedicure-sales', nom:'Pedicure + Sales', dur:80, precio:18000, desde:false },
   ],
   perfilado:[
-    { id:'depil-bozo',    nom:'Depilación bozo',          dur:5,  precio:3000,  desde:false },
-    { id:'lifting-pests', nom:'Lifting pestañas + tinte', dur:60, precio:18000, desde:false },
-    { id:'cejas-perf',    nom:'Perfilado cejas',          dur:15, precio:5000,  desde:false },
+    { id:'depil-bozo',    nom:'Depilaci\xf3n bozo',           dur:5,  precio:3000,  desde:false },
+    { id:'lifting-pests', nom:'Lifting pesta\xf1as + tinte',  dur:60, precio:18000, desde:false },
+    { id:'cejas-perf',    nom:'Perfilado cejas',               dur:15, precio:5000,  desde:false },
   ],
   promo:[
-    { id:'promo-acr-pedi',  nom:'Acrílicas tips + Pedicure Permanente', dur:165, precio:36000, desde:false },
-    { id:'promo-acr-lift',  nom:'Acrílico + Lifting',                   dur:210, precio:38000, desde:false },
-    { id:'promo-mani-pedi', nom:'Manicure + Pedicure completo',         dur:110, precio:25000, desde:false },
-    { id:'promo-mani-lift', nom:'Manicure permanente + Lifting',        dur:110, precio:29000, desde:false },
+    { id:'promo-acr-pedi',  nom:'Acr\xedlicas tips + Pedicure Permanente', dur:165, precio:36000, desde:false },
+    { id:'promo-acr-lift',  nom:'Acr\xedlico + Lifting',                   dur:210, precio:38000, desde:false },
+    { id:'promo-mani-pedi', nom:'Manicure + Pedicure completo',             dur:110, precio:25000, desde:false },
+    { id:'promo-mani-lift', nom:'Manicure permanente + Lifting',            dur:110, precio:29000, desde:false },
   ],
   retiro:[
-    { id:'retiro-acr',  nom:'Retiro acrílico (otro salón)',    dur:40, precio:10000, desde:false },
-    { id:'retiro-perm', nom:'Retiro permanente (otro salón)',  dur:15, precio:5000,  desde:false },
+    { id:'retiro-acr',  nom:'Retiro acr\xedlico (otro sal\xf3n)',   dur:40, precio:10000, desde:false },
+    { id:'retiro-perm', nom:'Retiro permanente (otro sal\xf3n)',     dur:15, precio:5000,  desde:false },
   ],
 };
 
-// ── STATE ────────────────────────────────────────────────────────
 let selPro = null;
 let selSvc = null;
 let activeCat = 'manicure';
 
-// ── HELPERS ─────────────────────────────────────────────────────
 function fmtDur(min) {
   if (min < 60) return `${min} min`;
   const h = Math.floor(min / 60), m = min % 60;
@@ -545,7 +672,6 @@ function fmtPrecio(n) {
   return '$' + n.toLocaleString('es-CL');
 }
 
-// ── PROFESSIONAL CARDS ─────────────────────────────────────────
 function renderPros() {
   const el = document.getElementById('pros-scroll');
   let html = '';
@@ -553,22 +679,21 @@ function renderPros() {
     html += `
     <div class="pc" id="pc-${p.id}" onclick="selectPro('${p.id}')">
       <div class="pc-av" style="background:${p.grad}">
-        <span style="color:${p.color === '#a4c4b8' ? '#2d4a3e' : '#1a1620'}">${p.inicial}</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:#fff">${p.inicial}</span>
       </div>
       <div class="pc-name">${p.nombre}</div>
       <div class="pc-role">Manicurista</div>
-      <span class="pc-cta">Ver servicios →</span>
+      <span class="pc-cta">Ver servicios</span>
     </div>`;
   });
-  // Sin preferencia
   html += `
   <div class="pc" id="pc-any" onclick="selectPro('any')">
     <div class="pc-av" style="background:var(--s3);border-color:var(--border2)">
-      <span style="font-size:28px;font-family:sans-serif;color:var(--text3)">✦</span>
+      <span style="font-size:32px;color:var(--text2)">&#x2731;</span>
     </div>
     <div class="pc-name" style="font-size:11px">Sin preferencia</div>
-    <div class="pc-role">La próxima disponible</div>
-    <span class="pc-cta">Reservar →</span>
+    <div class="pc-role">La pr\xf3xima disponible</div>
+    <span class="pc-cta">Reservar</span>
   </div>`;
   el.innerHTML = html;
 }
@@ -589,30 +714,28 @@ function clearProSel() {
   selPro = null;
 }
 
-// ── SERVICE PICKER ───────────────────────────────────────────────
 function openSP(pro) {
   selPro = pro;
   activeCat = 'manicure';
 
-  // Update header
-  const avEl = document.getElementById('sp-av-el');
+  const avEl   = document.getElementById('sp-av-el');
   const nameEl = document.getElementById('sp-pro-name');
   const roleEl = document.getElementById('sp-pro-role');
+
   if (pro) {
     avEl.style.background = pro.grad;
-    avEl.innerHTML = `<span style="color:${pro.color === '#a4c4b8' ? '#2d4a3e' : '#1a1620'}">${pro.inicial}</span>`;
+    avEl.innerHTML = `<span style="color:#fff;font-weight:700;font-size:16px">${pro.inicial}</span>`;
     nameEl.textContent = pro.nombre;
-    roleEl.textContent = 'Manicurista · Elige un servicio';
+    roleEl.textContent = 'Manicurista - Elige un servicio';
   } else {
-    avEl.style.background = 'var(--s3)';
-    avEl.innerHTML = '<span style="font-size:22px;color:var(--rose)">💅</span>';
+    avEl.style.background = '#1d1922';
+    avEl.innerHTML = '<span style="font-weight:700;font-size:15px;color:#c9a4c0;letter-spacing:.06em">MAE</span>';
     nameEl.textContent = 'MAE Studio';
     roleEl.textContent = 'Elige tu servicio';
   }
 
   renderCats();
   renderSvcList();
-
   document.getElementById('sp-ov').classList.add('on');
   document.getElementById('sp-sheet').classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -662,42 +785,38 @@ function pickSvc(cat, id) {
   setTimeout(openBK, 80);
 }
 
-// ── BOOKING SHEET ────────────────────────────────────────────────
 function openBK() {
   if (!selSvc) return;
 
-  // Service card
   document.getElementById('bk-svc-card').innerHTML = `
     <div class="bk-svc-nm">${selSvc.nom}</div>
     <div class="bk-svc-row">
-      <span class="bk-svc-meta">⏱ ${fmtDur(selSvc.dur)}</span>
-      <span class="bk-svc-price">${selSvc.desde ? '<small style="font-size:11px;font-family:DM Sans,sans-serif;color:var(--text3)">desde&nbsp;</small>' : ''}${fmtPrecio(selSvc.precio)}</span>
+      <span class="bk-svc-meta">${fmtDur(selSvc.dur)}</span>
+      <span class="bk-svc-price">${selSvc.desde ? '<small style="font-size:11px;font-family:\'DM Sans\',sans-serif;color:rgba(245,240,244,.36)">desde&nbsp;</small>' : ''}${fmtPrecio(selSvc.precio)}</span>
     </div>`;
 
-  // Pro row
   const pro = selPro;
   document.getElementById('bk-pro-row').innerHTML = pro ? `
     <div class="bk-pro-av" style="background:${pro.grad}">
-      <span style="font-size:12px;color:${pro.color === '#a4c4b8' ? '#2d4a3e' : '#1a1620'}">${pro.inicial}</span>
+      <span style="font-size:12px;color:#fff;font-weight:700">${pro.inicial}</span>
     </div>
     <div>
       <div class="bk-pro-name">${pro.nombre}</div>
       <div class="bk-pro-role">Manicurista</div>
     </div>
   ` : `
-    <div class="bk-pro-av" style="background:var(--s3);border-color:var(--border2)">
-      <span style="font-size:16px;color:var(--text3)">✦</span>
+    <div class="bk-pro-av" style="background:#1d1922;border-color:rgba(201,164,192,.22)">
+      <span style="font-size:16px;color:#c9a4c0">&#x2731;</span>
     </div>
     <div>
       <div class="bk-pro-name">Sin preferencia</div>
-      <div class="bk-pro-role">La próxima disponible</div>
+      <div class="bk-pro-role">La pr\xf3xima disponible</div>
     </div>
   `;
 
   document.getElementById('bk-name').value = '';
   document.getElementById('bk-phone').value = '';
   document.getElementById('bk-name').classList.remove('err');
-
   document.getElementById('bk-ov').classList.add('on');
   document.getElementById('bk-sheet').classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -711,7 +830,6 @@ function closeBK() {
   clearProSel();
 }
 
-// ── BOOKING ACTION ───────────────────────────────────────────────
 function reservar() {
   const nameInp = document.getElementById('bk-name');
   const name = nameInp.value.trim();
@@ -721,28 +839,25 @@ function reservar() {
     nameInp.addEventListener('input', () => nameInp.classList.remove('err'), { once:true });
     return;
   }
-
-  const pro  = selPro ? selPro.nombre : 'Sin preferencia';
-  const svc  = selSvc;
-  const dur  = fmtDur(svc.dur);
-  const prc  = (svc.desde ? 'desde ' : '') + fmtPrecio(svc.precio);
+  const pro   = selPro ? selPro.nombre : 'Sin preferencia';
+  const svc   = selSvc;
+  const dur   = fmtDur(svc.dur);
+  const prc   = (svc.desde ? 'desde ' : '') + fmtPrecio(svc.precio);
   const phone = document.getElementById('bk-phone').value.trim();
 
-  let msg = `Hola MAE Studio 💅 Quiero reservar una cita:\n\n`;
-  msg    += `• Servicio: ${svc.nom}\n`;
-  msg    += `• Profesional: ${pro}\n`;
-  msg    += `• Duración aprox: ${dur}\n`;
-  msg    += `• Precio: ${prc}\n\n`;
+  let msg = 'Hola MAE Studio! Quiero reservar una cita:\n\n';
+  msg    += `Servicio: ${svc.nom}\n`;
+  msg    += `Profesional: ${pro}\n`;
+  msg    += `Duraci\xf3n aprox: ${dur}\n`;
+  msg    += `Precio: ${prc}\n\n`;
   msg    += `Mi nombre es ${name}`;
-  if (phone) msg += `\nMi teléfono: ${phone}`;
+  if (phone) msg += `\nMi tel\xe9fono: ${phone}`;
 
   window.open(`https://wa.me/56964073320?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// ── INIT ────────────────────────────────────────────────────────
 renderPros();
 
-// Close sheets on back-swipe / ESC
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (document.getElementById('bk-sheet').classList.contains('on')) closeBK();
