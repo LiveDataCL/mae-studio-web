@@ -287,6 +287,11 @@ img{display:block;max-width:100%}
   position:absolute;bottom:0;left:0;right:0;
   padding:0 28px 32px;text-align:center;
 }
+.hero-logo{
+  width:68px;height:68px;border-radius:14px;
+  object-fit:cover;margin:0 auto 12px;display:block;
+  box-shadow:0 2px 16px rgba(0,0,0,.5);
+}
 .hero-tagline{
   font-size:10px;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(255,255,255,.68);margin-bottom:8px;
@@ -610,6 +615,7 @@ img{display:block;max-width:100%}
     <div class="hero-fade-top"></div>
     <div class="hero-fade"></div>
     <div class="hero-content">
+      <img class="hero-logo" src="img/mae-logo.jpg" alt="MAE Studio logo" loading="eager"/>
       <div class="hero-tagline">Manicure &middot; Pedicure &middot; Cejas</div>
       <h1 class="hero-name">MAE<span> Studio</span></h1>
       <div class="hero-stars" role="img" aria-label="5 de 5 estrellas, 12 rese&#241;as Google">
@@ -1126,7 +1132,8 @@ async function _loadSlots() {
           aria-label="${s.hora}${s.disponible ? '' : ', no disponible'}">${s.hora}</button>
       `).join('')
     }</div>`;
-  } catch(_) {
+  } catch(err) {
+    console.error('[MAE] slots error:', err);
     cont.innerHTML = '<div class="bk-slots-empty">Error al cargar horarios. Intenta nuevamente.</div>';
   }
 }
