@@ -33,18 +33,18 @@ img{display:block;max-width:100%}
 /* Light theme tokens — page only; sheets use hardcoded dark values */
 :root{
   --bg:#fff;
-  --s1:#fdf5f9;
-  --s2:#f7ecf5;
-  --s3:#f0dde9;
-  --border:#e8d4e4;
-  --border2:#d4a8c8;
-  --rose:#7e5278;      /* 6.2:1 on white - WCAG AA */
-  --rose2:#c9a4c0;     /* decorative only */
-  --roseDk:#5d2f50;    /* CTA bg — 9.7:1 with white text */
-  --rosePale:rgba(201,164,192,.10);
-  --text:#1a1020;
-  --text2:#5c4458;
-  --text3:#9c7a94;
+  --s1:#fef5f9;         /* warm blush tint */
+  --s2:#fce8f2;         /* blush pink */
+  --s3:#f8d4e8;         /* deeper blush */
+  --border:#f0cade;
+  --border2:#e09fc8;
+  --rose:#9e3d6a;        /* warm rose — 6.3:1 on white WCAG AA */
+  --rose2:#e8b0d0;       /* decorative light pink */
+  --roseDk:#72234d;      /* CTA bg — 10.2:1 with white text WCAG AAA */
+  --rosePale:rgba(232,176,208,.12);
+  --text:#1a0f14;
+  --text2:#5c3a4a;
+  --text3:#9c6a84;
 }
 
 /* ── SERVICE PICKER SHEET (dark overlay modal) ── */
@@ -71,10 +71,11 @@ img{display:block;max-width:100%}
 .sp-hdr-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#f5f0f4;line-height:1.1}
 .sp-hdr-sub{font-size:10px;color:rgba(245,240,244,.42);margin-top:2px;text-transform:uppercase;letter-spacing:.08em}
 .sp-close{
-  width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);
+  width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.07);
   color:rgba(245,240,244,.45);font-size:17px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;cursor:pointer;transition:background .12s;
+  margin-right:-6px;
 }
 .sp-close:hover{background:rgba(255,255,255,.14);color:#f5f0f4}
 .sp-cats{
@@ -166,11 +167,12 @@ img{display:block;max-width:100%}
 }
 .bk-confirm:active{opacity:.85}
 .bk-cancel{
-  padding:13px;border-radius:12px;
+  padding:14px;border-radius:12px;
   border:1px solid rgba(245,240,244,.12);
   color:#a8a0b0;
   font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   transition:border-color .12s,color .12s;
+  min-height:44px;
 }
 .bk-cancel:active{color:#f5f0f4;border-color:rgba(245,240,244,.25)}
 
@@ -229,10 +231,11 @@ img{display:block;max-width:100%}
 .hero-rev{font-size:10px;color:rgba(255,255,255,.55)}
 .hero-cta{
   display:inline-block;
-  padding:14px 36px;border-radius:14px;
-  background:#fff;color:#5d2f50;
+  padding:16px 36px;border-radius:14px;
+  background:#fff;color:#72234d;
   font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   box-shadow:0 4px 20px rgba(0,0,0,.22);transition:opacity .15s;
+  min-height:44px;
 }
 .hero-cta:active{opacity:.86}
 
@@ -398,6 +401,55 @@ img{display:block;max-width:100%}
 
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 
+/* ── FOCUS VISIBLE (keyboard / a11y) ── */
+*:focus-visible{
+  outline:2px solid var(--rose);outline-offset:3px;border-radius:4px;
+}
+
+/* ── ON-PAGE SERVICE CATALOG (El Panda Rojo pattern) ── */
+.svc-sec{border-top:1px solid var(--border);padding-bottom:8px}
+.svc-tabs{
+  display:flex;gap:8px;overflow-x:auto;padding:0 20px 16px;
+  scrollbar-width:none;
+}
+.svc-tabs::-webkit-scrollbar{display:none}
+.svc-tab{
+  flex-shrink:0;padding:10px 18px;border-radius:22px;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  border:1.5px solid var(--border);background:var(--bg);color:var(--text3);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+  min-height:44px;display:flex;align-items:center;
+}
+.svc-tab.active{background:var(--roseDk);color:#fff;border-color:var(--roseDk)}
+.svc-cards{padding:0 20px 24px;display:flex;flex-direction:column;gap:10px}
+.svc-card{
+  display:flex;align-items:center;gap:12px;padding:16px;
+  background:var(--s1);border:1.5px solid var(--border);border-radius:14px;
+  transition:border-color .12s,background .12s;
+}
+.svc-card:active{background:var(--s2);border-color:var(--border2)}
+.svc-card-info{flex:1;min-width:0}
+.svc-card-name{font-size:14px;font-weight:700;color:var(--text);line-height:1.25}
+.svc-card-dur{font-size:11px;color:var(--text3);margin-top:3px}
+.svc-card-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.svc-card-price{
+  font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;
+  color:var(--rose);line-height:1;white-space:nowrap;text-align:right;
+}
+.svc-card-desde{
+  display:block;font-size:9px;color:var(--text3);
+  text-transform:uppercase;letter-spacing:.08em;text-align:right;margin-top:-2px;
+  font-family:'DM Sans',sans-serif;
+}
+.svc-card-btn{
+  padding:9px 16px;border-radius:10px;
+  background:var(--roseDk);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  min-height:36px;display:flex;align-items:center;justify-content:center;
+  transition:opacity .12s;
+}
+.svc-card-btn:active{opacity:.85}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
@@ -468,9 +520,9 @@ img{display:block;max-width:100%}
     <div class="hero-fade"></div>
     <div class="hero-content">
       <div class="hero-tagline">Manicure &middot; Pedicure &middot; Cejas</div>
-      <div class="hero-name">MAE<span> Studio</span></div>
-      <div class="hero-stars">
-        <span class="hero-star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <h1 class="hero-name">MAE<span> Studio</span></h1>
+      <div class="hero-stars" role="img" aria-label="5 de 5 estrellas, 12 rese&#241;as Google">
+        <span class="hero-star" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span class="hero-rev">5.0 &middot; 12 rese&#241;as Google</span>
       </div>
       <button class="hero-cta" onclick="openSP(null)">Reservar ahora</button>
@@ -521,9 +573,18 @@ img{display:block;max-width:100%}
     <button class="main-cta" onclick="openSP(null)">Ver servicios y reservar</button>
   </div>
 
+  <!-- Services catalog — visible on page (El Panda Rojo pattern) -->
+  <section class="svc-sec">
+    <div class="sec" style="padding-bottom:0">
+      <div class="sec-t">Nuestros Servicios</div>
+      <div class="sec-sep"></div>
+    </div>
+    <div class="svc-tabs" id="svc-tabs" role="tablist" aria-label="Categorías de servicios"></div>
+    <div class="svc-cards" id="svc-cards"></div>
+  </section>
+
   <!-- Profesionales -->
   <section class="sec" style="border-top:1px solid var(--border)">
-    <div class="sec-ey">Nuestro equipo</div>
     <div class="sec-t">Profesionales</div>
     <div class="sec-sep"></div>
     <div class="pros-scroll" id="pros-scroll"></div>
@@ -560,7 +621,6 @@ img{display:block;max-width:100%}
 
   <!-- Contact -->
   <section class="sec" style="padding-top:8px;border-top:1px solid var(--border)">
-    <div class="sec-ey">Enc&#250;entranos</div>
     <div class="sec-t">Contacto</div>
     <div class="sec-sep"></div>
     <div class="connect-links">
@@ -662,6 +722,50 @@ const SVCS = {
 let selPro = null;
 let selSvc = null;
 let activeCat = 'manicure';
+let activeSvcCat = 'manicure';
+
+function renderSvcTabs() {
+  const el = document.getElementById('svc-tabs');
+  if (!el) return;
+  el.innerHTML = CATS.map(c =>
+    `<button class="svc-tab${c.id === activeSvcCat ? ' active' : ''}"
+      role="tab" aria-selected="${c.id === activeSvcCat}"
+      onclick="setSvcCat('${c.id}')">${c.label}</button>`
+  ).join('');
+}
+
+function setSvcCat(cat) {
+  activeSvcCat = cat;
+  renderSvcTabs();
+  renderSvcCards();
+}
+
+function renderSvcCards() {
+  const el = document.getElementById('svc-cards');
+  if (!el) return;
+  const items = SVCS[activeSvcCat] || [];
+  el.innerHTML = items.map(s => `
+    <div class="svc-card">
+      <div class="svc-card-info">
+        <div class="svc-card-name">${s.nom}</div>
+        <div class="svc-card-dur">${fmtDur(s.dur)}</div>
+      </div>
+      <div class="svc-card-right">
+        <div class="svc-card-price">
+          ${s.desde ? `<span class="svc-card-desde">desde</span>` : ''}
+          ${fmtPrecio(s.precio)}
+        </div>
+        <button class="svc-card-btn" onclick="pickSvcDirect('${activeSvcCat}','${s.id}')">Reservar</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function pickSvcDirect(cat, id) {
+  selSvc = SVCS[cat].find(s => s.id === id);
+  selPro = null;
+  openBK();
+}
 
 function fmtDur(min) {
   if (min < 60) return `${min} min`;
@@ -677,24 +781,24 @@ function renderPros() {
   let html = '';
   PROS.forEach(p => {
     html += `
-    <div class="pc" id="pc-${p.id}" onclick="selectPro('${p.id}')">
+    <button class="pc" id="pc-${p.id}" onclick="selectPro('${p.id}')" aria-label="Ver servicios de ${p.nombre}">
       <div class="pc-av" style="background:${p.grad}">
         <span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:#fff">${p.inicial}</span>
       </div>
       <div class="pc-name">${p.nombre}</div>
       <div class="pc-role">Manicurista</div>
       <span class="pc-cta">Ver servicios</span>
-    </div>`;
+    </button>`;
   });
   html += `
-  <div class="pc" id="pc-any" onclick="selectPro('any')">
+  <button class="pc" id="pc-any" onclick="selectPro('any')" aria-label="Sin preferencia, siguiente disponible">
     <div class="pc-av" style="background:var(--s3);border-color:var(--border2)">
       <span style="font-size:32px;color:var(--text2)">&#x2731;</span>
     </div>
     <div class="pc-name" style="font-size:11px">Sin preferencia</div>
     <div class="pc-role">La pr\xf3xima disponible</div>
     <span class="pc-cta">Reservar</span>
-  </div>`;
+  </button>`;
   el.innerHTML = html;
 }
 
@@ -857,6 +961,8 @@ function reservar() {
 }
 
 renderPros();
+renderSvcTabs();
+renderSvcCards();
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
