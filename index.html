@@ -122,8 +122,11 @@ img{display:block;max-width:100%}
 .bk-handle{width:38px;height:4px;background:rgba(255,255,255,.14);border-radius:2px;margin:12px auto 0}
 .bk-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px}
 .bk-title{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c9a4c0}
-.bk-close{color:rgba(245,240,244,.4);font-size:20px;cursor:pointer;padding:2px 0;transition:color .12s}
-.bk-close:hover{color:#f5f0f4}
+.bk-close{
+  color:rgba(245,240,244,.4);font-size:18px;cursor:pointer;transition:color .12s;
+  min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;
+}
+.bk-close:hover{color:#f5f0f4;background:rgba(255,255,255,.07)}
 .bk-svc-card{
   margin:0 16px 14px;padding:14px 16px;
   background:#1d1922;border:1px solid rgba(201,164,192,.12);border-radius:14px;
@@ -175,6 +178,78 @@ img{display:block;max-width:100%}
   min-height:44px;
 }
 .bk-cancel:active{color:#f5f0f4;border-color:rgba(245,240,244,.25)}
+
+/* ── BOOKING SHEET: PRO PICKER ── */
+.bk-pro-pick{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 14px}
+.bk-pro-pill{
+  flex:1;min-width:calc(50% - 4px);
+  padding:10px 12px;border-radius:10px;
+  background:#1d1922;border:1.5px solid rgba(201,164,192,.18);
+  color:#f5f0f4;font-size:12px;font-weight:600;
+  display:flex;align-items:center;gap:8px;text-align:left;min-height:44px;
+  transition:border-color .12s,background .12s;cursor:pointer;
+}
+.bk-pro-pill.sel{border-color:#c9a4c0;background:rgba(201,164,192,.12)}
+.bk-pro-pill-av{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;
+}
+
+/* ── BOOKING SHEET: DATE ── */
+.bk-date-inp{color-scheme:dark}
+.bk-date-inp::-webkit-calendar-picker-indicator{filter:invert(.5)}
+
+/* ── BOOKING SHEET: SLOTS ── */
+#bk-slots-wrap{padding:0 16px 14px;display:none}
+.bk-slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.bk-slot{
+  padding:10px 6px;border-radius:10px;
+  background:#1d1922;border:1.5px solid rgba(201,164,192,.14);
+  color:#f5f0f4;font-size:12px;font-weight:600;
+  text-align:center;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .12s,background .12s;
+}
+.bk-slot.avail{cursor:pointer}
+.bk-slot.avail:active{background:rgba(201,164,192,.1);border-color:rgba(201,164,192,.38)}
+.bk-slot.sel{background:rgba(201,164,192,.18);border-color:#c9a4c0;color:#c9a4c0}
+.bk-slot.off{opacity:.32;text-decoration:line-through;pointer-events:none}
+.bk-slots-empty{font-size:12px;color:rgba(245,240,244,.35);text-align:center;padding:16px 0}
+.bk-loading{display:flex;align-items:center;justify-content:center;padding:20px;gap:8px;color:rgba(245,240,244,.4);font-size:11px}
+.bk-spin{width:16px;height:16px;border:2px solid rgba(201,164,192,.2);border-top-color:#c9a4c0;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── BOOKING SHEET: API CONFIRM BUTTON ── */
+.bk-confirm-api{
+  padding:15px 20px;border-radius:14px;
+  background:var(--roseDk);color:#fff;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 4px 20px rgba(114,35,77,.3);transition:opacity .15s;min-height:50px;
+}
+.bk-confirm-api:disabled{opacity:.42;pointer-events:none}
+.bk-confirm-api:active{opacity:.8}
+
+/* ── BOOKING SHEET: CONFIRMATION SCREEN ── */
+#bk-confirm-screen{display:none;padding:20px 20px 36px;text-align:center}
+.bk-conf-check{font-size:48px;margin-bottom:10px}
+.bk-conf-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#c9a4c0;margin-bottom:4px}
+.bk-conf-sub{font-size:12px;color:rgba(245,240,244,.42);margin-bottom:18px}
+.bk-conf-card{background:#1d1922;border:1px solid rgba(201,164,192,.18);border-radius:14px;padding:14px;margin-bottom:18px;text-align:left}
+.bk-conf-row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(201,164,192,.08)}
+.bk-conf-row:last-child{border-bottom:none}
+.bk-conf-key{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(245,240,244,.36)}
+.bk-conf-val{font-size:13px;color:#f5f0f4;font-weight:500;text-align:right;max-width:60%}
+.bk-conf-wa{
+  width:100%;padding:15px;border-radius:14px;
+  background:#25D366;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;min-height:50px;
+}
+.bk-conf-close-btn{
+  width:100%;padding:14px;border-radius:12px;
+  border:1px solid rgba(245,240,244,.12);
+  color:#a8a0b0;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;min-height:44px;
+}
 
 /* ── WHATSAPP FAB ── */
 .wa-fab{
@@ -483,28 +558,44 @@ img{display:block;max-width:100%}
 <div id="bk-sheet" role="dialog" aria-modal="true" aria-label="Reservar cita">
   <div class="bk-handle"></div>
   <div class="bk-hdr">
-    <span class="bk-title">Reservar</span>
+    <span class="bk-title">Reservar cita</span>
     <button class="bk-close" onclick="closeBK()" aria-label="Cerrar">&#x2715;</button>
   </div>
-  <div class="bk-svc-card" id="bk-svc-card"></div>
-  <div class="bk-pro-row" id="bk-pro-row"></div>
-  <div class="bk-form">
-    <div class="bk-field">
-      <label class="bk-lbl" for="bk-name">Tu nombre</label>
-      <input id="bk-name" class="bk-inp" type="text" placeholder="Ej. Maria Gonzalez" autocomplete="given-name"/>
+  <!-- Main form (hidden after successful booking) -->
+  <div id="bk-main-form">
+    <div class="bk-svc-card" id="bk-svc-card"></div>
+    <!-- Professional picker (shown when no pro selected) -->
+    <div id="bk-pro-picker"></div>
+    <!-- Professional row (shown when pro is selected) -->
+    <div class="bk-pro-row" id="bk-pro-row" style="display:none"></div>
+    <div class="bk-form">
+      <div class="bk-field">
+        <label class="bk-lbl" for="bk-name">Tu nombre</label>
+        <input id="bk-name" class="bk-inp" type="text" placeholder="Ej. Maria Gonzalez" autocomplete="given-name"/>
+      </div>
+      <div class="bk-field">
+        <label class="bk-lbl" for="bk-phone">Tel&#233;fono (opcional)</label>
+        <input id="bk-phone" class="bk-inp" type="tel" placeholder="+56 9 ..." autocomplete="tel"/>
+      </div>
+      <div class="bk-field" id="bk-date-field" style="display:none">
+        <label class="bk-lbl" for="bk-date">Fecha</label>
+        <input id="bk-date" class="bk-inp bk-date-inp" type="date" oninput="onDateChange()"/>
+      </div>
     </div>
-    <div class="bk-field">
-      <label class="bk-lbl" for="bk-phone">Telefono (opcional)</label>
-      <input id="bk-phone" class="bk-inp" type="tel" placeholder="+56 9 ..." autocomplete="tel"/>
+    <!-- Time slots -->
+    <div id="bk-slots-wrap">
+      <div class="bk-lbl" style="padding:0 16px 6px">Horario disponible</div>
+      <div id="bk-slots"></div>
+    </div>
+    <div class="bk-foot">
+      <button class="bk-confirm-api" id="bk-btn-reservar" onclick="reservar()" disabled>
+        Reservar cita
+      </button>
+      <button class="bk-cancel" onclick="closeBK()">Cancelar</button>
     </div>
   </div>
-  <div class="bk-foot">
-    <button class="bk-confirm" onclick="reservar()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-      Reservar por WhatsApp
-    </button>
-    <button class="bk-cancel" onclick="closeBK()">Cancelar</button>
-  </div>
+  <!-- Confirmation screen (shown after successful booking) -->
+  <div id="bk-confirm-screen"></div>
 </div>
 
 <!-- ── MAIN CONTENT ── -->
@@ -719,10 +810,17 @@ const SVCS = {
   ],
 };
 
+const MAE_API = 'https://barberpilot-api-production.up.railway.app';
+const TENANT  = 'mae-studio';
+
 let selPro = null;
 let selSvc = null;
 let activeCat = 'manicure';
 let activeSvcCat = 'manicure';
+
+// Booking state
+let bkBid   = null;  // bid of selected professional (p1..p4)
+let bkSlot  = null;  // { hora, hora_fin }
 
 function renderSvcTabs() {
   const el = document.getElementById('svc-tabs');
@@ -892,6 +990,20 @@ function pickSvc(cat, id) {
 function openBK() {
   if (!selSvc) return;
 
+  // Reset booking state
+  bkBid  = selPro ? selPro.id : null;
+  bkSlot = null;
+
+  // Reset form
+  document.getElementById('bk-name').value = '';
+  document.getElementById('bk-phone').value = '';
+  document.getElementById('bk-name').classList.remove('err');
+  document.getElementById('bk-main-form').style.display = 'block';
+  document.getElementById('bk-confirm-screen').style.display = 'none';
+  document.getElementById('bk-slots-wrap').style.display = 'none';
+  document.getElementById('bk-slots').innerHTML = '';
+
+  // Render service card
   document.getElementById('bk-svc-card').innerHTML = `
     <div class="bk-svc-nm">${selSvc.nom}</div>
     <div class="bk-svc-row">
@@ -899,31 +1011,137 @@ function openBK() {
       <span class="bk-svc-price">${selSvc.desde ? '<small style="font-size:11px;font-family:\'DM Sans\',sans-serif;color:rgba(245,240,244,.36)">desde&nbsp;</small>' : ''}${fmtPrecio(selSvc.precio)}</span>
     </div>`;
 
-  const pro = selPro;
-  document.getElementById('bk-pro-row').innerHTML = pro ? `
-    <div class="bk-pro-av" style="background:${pro.grad}">
-      <span style="font-size:12px;color:#fff;font-weight:700">${pro.inicial}</span>
-    </div>
-    <div>
-      <div class="bk-pro-name">${pro.nombre}</div>
-      <div class="bk-pro-role">Manicurista</div>
-    </div>
-  ` : `
-    <div class="bk-pro-av" style="background:#1d1922;border-color:rgba(201,164,192,.22)">
-      <span style="font-size:16px;color:#c9a4c0">&#x2731;</span>
-    </div>
-    <div>
-      <div class="bk-pro-name">Sin preferencia</div>
-      <div class="bk-pro-role">La pr\xf3xima disponible</div>
-    </div>
-  `;
+  // Set default date (tomorrow)
+  const tom = new Date();
+  tom.setDate(tom.getDate() + 1);
+  const pad = n => String(n).padStart(2,'0');
+  const todayStr = `${new Date().getFullYear()}-${pad(new Date().getMonth()+1)}-${pad(new Date().getDate())}`;
+  const tomStr   = `${tom.getFullYear()}-${pad(tom.getMonth()+1)}-${pad(tom.getDate())}`;
+  const maxDate  = (() => { const e = new Date(); e.setDate(e.getDate()+30); return `${e.getFullYear()}-${pad(e.getMonth()+1)}-${pad(e.getDate())}`; })();
+  const dateEl = document.getElementById('bk-date');
+  dateEl.value = tomStr;
+  dateEl.min   = todayStr;
+  dateEl.max   = maxDate;
 
-  document.getElementById('bk-name').value = '';
-  document.getElementById('bk-phone').value = '';
-  document.getElementById('bk-name').classList.remove('err');
+  // Show pro picker or row
+  _renderBkPro();
+  _updateReservarBtn();
+
   document.getElementById('bk-ov').classList.add('on');
   document.getElementById('bk-sheet').classList.add('on');
   document.body.style.overflow = 'hidden';
+
+  // If a pro is already selected, load slots immediately
+  if (bkBid) _loadSlots();
+}
+
+function _renderBkPro() {
+  const picker = document.getElementById('bk-pro-picker');
+  const row    = document.getElementById('bk-pro-row');
+  const dateF  = document.getElementById('bk-date-field');
+
+  if (!bkBid) {
+    row.style.display    = 'none';
+    dateF.style.display  = 'none';
+    picker.style.display = 'block';
+    picker.innerHTML = `
+      <div style="padding:0 16px 6px"><div class="bk-lbl">Elige tu manicurista</div></div>
+      <div class="bk-pro-pick">
+        ${PROS.map(p => `
+          <button class="bk-pro-pill" id="bkpill-${p.id}" onclick="_onProPick('${p.id}')">
+            <div class="bk-pro-pill-av" style="background:${p.grad}">${p.inicial}</div>
+            ${p.nombre}
+          </button>
+        `).join('')}
+      </div>`;
+  } else {
+    picker.style.display = 'none';
+    dateF.style.display  = '';
+    row.style.display    = 'flex';
+    const pro = PROS.find(p => p.id === bkBid);
+    row.innerHTML = pro ? `
+      <div class="bk-pro-av" style="background:${pro.grad}">
+        <span style="font-size:12px;color:#fff;font-weight:700">${pro.inicial}</span>
+      </div>
+      <div>
+        <div class="bk-pro-name">${pro.nombre}</div>
+        <div class="bk-pro-role">Manicurista</div>
+      </div>
+      <button style="margin-left:auto;font-size:10px;color:rgba(201,164,192,.55);text-transform:uppercase;letter-spacing:.07em;padding:4px 8px;min-height:44px" onclick="_changePro()">Cambiar</button>
+    ` : '';
+  }
+}
+
+function _changePro() {
+  bkBid  = null;
+  bkSlot = null;
+  document.getElementById('bk-slots-wrap').style.display = 'none';
+  document.getElementById('bk-slots').innerHTML = '';
+  _renderBkPro();
+  _updateReservarBtn();
+}
+
+function _onProPick(id) {
+  bkBid  = id;
+  bkSlot = null;
+  _renderBkPro();
+  _loadSlots();
+  _updateReservarBtn();
+}
+
+function onDateChange() {
+  bkSlot = null;
+  _updateReservarBtn();
+  if (bkBid) _loadSlots();
+}
+
+async function _loadSlots() {
+  if (!bkBid || !selSvc) return;
+  const date = document.getElementById('bk-date').value;
+  if (!date) return;
+
+  const wrap = document.getElementById('bk-slots-wrap');
+  const cont = document.getElementById('bk-slots');
+  wrap.style.display = 'block';
+  cont.innerHTML = '<div class="bk-loading"><div class="bk-spin"></div>Buscando horarios…</div>';
+  bkSlot = null;
+  _updateReservarBtn();
+
+  try {
+    const r    = await fetch(`${MAE_API}/api/v2/tenants/${TENANT}/slots?bid=${bkBid}&date=${date}&svc_id=${selSvc.id}`);
+    const data = await r.json();
+    if (!data.ok || data.closed) {
+      cont.innerHTML = '<div class="bk-slots-empty">Cerrado este d\xeda. Elige otra fecha.</div>';
+      return;
+    }
+    const anyAvail = data.slots.some(s => s.disponible);
+    if (!data.slots.length || !anyAvail) {
+      cont.innerHTML = '<div class="bk-slots-empty">Sin horarios disponibles este d\xeda.</div>';
+      return;
+    }
+    cont.innerHTML = `<div class="bk-slots-grid">${
+      data.slots.map(s => `
+        <button class="bk-slot${s.disponible ? ' avail' : ' off'}"
+          ${s.disponible ? `onclick="_onSlotPick('${s.hora}','${s.hora_fin}')"` : 'disabled'}
+          aria-label="${s.hora}${s.disponible ? '' : ', no disponible'}">${s.hora}</button>
+      `).join('')
+    }</div>`;
+  } catch(_) {
+    cont.innerHTML = '<div class="bk-slots-empty">Error al cargar horarios. Intenta nuevamente.</div>';
+  }
+}
+
+function _onSlotPick(hora, hora_fin) {
+  bkSlot = { hora, hora_fin };
+  document.querySelectorAll('.bk-slot').forEach(el => el.classList.remove('sel'));
+  const btn = Array.from(document.querySelectorAll('.bk-slot.avail')).find(el => el.textContent.trim() === hora);
+  if (btn) btn.classList.add('sel');
+  _updateReservarBtn();
+}
+
+function _updateReservarBtn() {
+  const btn = document.getElementById('bk-btn-reservar');
+  if (btn) btn.disabled = !(bkBid && bkSlot);
 }
 
 function closeBK() {
@@ -931,33 +1149,119 @@ function closeBK() {
   document.getElementById('bk-sheet').classList.remove('on');
   document.body.style.overflow = '';
   selSvc = null;
+  bkBid  = null;
+  bkSlot = null;
   clearProSel();
 }
 
-function reservar() {
+async function reservar() {
   const nameInp = document.getElementById('bk-name');
-  const name = nameInp.value.trim();
+  const name    = nameInp.value.trim();
   if (!name) {
     nameInp.classList.add('err');
     nameInp.focus();
-    nameInp.addEventListener('input', () => nameInp.classList.remove('err'), { once:true });
+    nameInp.addEventListener('input', () => nameInp.classList.remove('err'), { once: true });
     return;
   }
-  const pro   = selPro ? selPro.nombre : 'Sin preferencia';
-  const svc   = selSvc;
-  const dur   = fmtDur(svc.dur);
-  const prc   = (svc.desde ? 'desde ' : '') + fmtPrecio(svc.precio);
+  if (!bkBid)  { alert('Por favor selecciona una manicurista.'); return; }
+  if (!bkSlot) { alert('Por favor selecciona un horario.'); return; }
+
+  const btn   = document.getElementById('bk-btn-reservar');
   const phone = document.getElementById('bk-phone').value.trim();
+  const date  = document.getElementById('bk-date').value;
 
-  let msg = 'Hola MAE Studio! Quiero reservar una cita:\n\n';
-  msg    += `Servicio: ${svc.nom}\n`;
-  msg    += `Profesional: ${pro}\n`;
-  msg    += `Duraci\xf3n aprox: ${dur}\n`;
-  msg    += `Precio: ${prc}\n\n`;
-  msg    += `Mi nombre es ${name}`;
-  if (phone) msg += `\nMi tel\xe9fono: ${phone}`;
+  btn.disabled     = true;
+  btn.textContent  = 'Reservando…';
 
-  window.open(`https://wa.me/56964073320?text=${encodeURIComponent(msg)}`, '_blank');
+  try {
+    const res  = await fetch(`${MAE_API}/api/v2/tenants/${TENANT}/appointments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        bid: bkBid, svc_id: selSvc.id, fecha: date,
+        hora_inicio: bkSlot.hora,
+        client_name: name,
+        client_phone: phone || null,
+      }),
+    });
+    const data = await res.json();
+
+    if (!data.ok) {
+      if (res.status === 409) {
+        bkSlot = null;
+        _updateReservarBtn();
+        await _loadSlots();
+        alert('Ese horario ya fue reservado. Por favor elige otro.');
+      } else {
+        throw new Error(data.error || 'Error al reservar');
+      }
+      btn.disabled    = false;
+      btn.textContent = 'Reservar cita';
+      return;
+    }
+
+    _showConfirmation(data.appointment, name, phone);
+  } catch(_) {
+    btn.disabled    = false;
+    btn.textContent = 'Reservar cita';
+    alert('Ocurri\xf3 un error. Por favor intenta nuevamente.');
+  }
+}
+
+function _showConfirmation(apt, name, phone) {
+  const pro      = PROS.find(p => p.id === bkBid);
+  const fechaStr = apt.fecha || document.getElementById('bk-date').value;
+  const [fy, fm, fd] = fechaStr.split('-').map(Number);
+  const fechaFmt = new Date(fy, fm - 1, fd).toLocaleDateString('es-CL', { weekday:'long', day:'numeric', month:'long' });
+  const hora     = (apt.hora_inicio || bkSlot.hora).toString().slice(0, 5);
+  const svcNom   = apt.svc_nom   || selSvc.nom;
+  const proNom   = apt.bnom      || (pro ? pro.nombre : '');
+
+  document.getElementById('bk-main-form').style.display    = 'none';
+  document.getElementById('bk-confirm-screen').style.display = 'block';
+
+  const confScreen = document.getElementById('bk-confirm-screen');
+  confScreen.innerHTML = `
+    <div class="bk-conf-check">&#x2728;</div>
+    <div class="bk-conf-title">&#xa1;Reserva confirmada!</div>
+    <div class="bk-conf-sub">Te esperamos en Av. Alameda 949, Santiago</div>
+    <div class="bk-conf-card">
+      <div class="bk-conf-row">
+        <div class="bk-conf-key">Servicio</div>
+        <div class="bk-conf-val">${svcNom}</div>
+      </div>
+      <div class="bk-conf-row">
+        <div class="bk-conf-key">Manicurista</div>
+        <div class="bk-conf-val">${proNom}</div>
+      </div>
+      <div class="bk-conf-row">
+        <div class="bk-conf-key">Fecha</div>
+        <div class="bk-conf-val">${fechaFmt}</div>
+      </div>
+      <div class="bk-conf-row">
+        <div class="bk-conf-key">Hora</div>
+        <div class="bk-conf-val">${hora}</div>
+      </div>
+      <div class="bk-conf-row">
+        <div class="bk-conf-key">Nombre</div>
+        <div class="bk-conf-val">${name}</div>
+      </div>
+      <div class="bk-conf-row">
+        <div class="bk-conf-key">ID reserva</div>
+        <div class="bk-conf-val" style="font-size:11px;color:rgba(245,240,244,.36)">#${apt.id}</div>
+      </div>
+    </div>
+    <button class="bk-conf-wa" id="bk-conf-wa-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      Confirmar por WhatsApp
+    </button>
+    <button class="bk-conf-close-btn" onclick="closeBK()">Cerrar</button>`;
+
+  // Wire WhatsApp button after render (avoids innerHTML encoding issues)
+  document.getElementById('bk-conf-wa-btn').onclick = () => {
+    const msg = `Hola MAE Studio! Mi reserva est\xe1 confirmada:\n\n✅ Servicio: ${svcNom}\n👩 Manicurista: ${proNom}\n📅 Fecha: ${fechaFmt}\n🕐 Hora: ${hora}\n👤 Nombre: ${name}${phone ? '\n📱 Tel: ' + phone : ''}`;
+    window.open('https://wa.me/56964073320?text=' + encodeURIComponent(msg), '_blank');
+  };
 }
 
 renderPros();
