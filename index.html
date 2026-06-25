@@ -558,7 +558,24 @@ img{display:block;max-width:100%}
   border:1.5px solid var(--border);background:var(--bg);color:var(--text3);
   cursor:pointer;transition:all .15s;white-space:nowrap;
   min-height:44px;display:flex;align-items:center;
+  position:relative;overflow:hidden;
 }
+.svc-tab::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.55) 50%,transparent 75%);
+  transform:translateX(-180%);pointer-events:none;
+  animation:svcShine 4.2s cubic-bezier(.4,0,.6,1) var(--sd,0s) 3;
+}
+.svc-tab:nth-child(1){--sd:.15s}
+.svc-tab:nth-child(2){--sd:.75s}
+.svc-tab:nth-child(3){--sd:1.35s}
+@keyframes svcShine{
+  0%,100%{transform:translateX(-180%);opacity:0}
+  4%{opacity:1}
+  28%{transform:translateX(220%);opacity:0}
+}
+/* stop hint the moment user taps any tab */
+.svc-tabs.interacted .svc-tab::after{animation:none;opacity:0}
 .svc-tab.active{background:var(--roseDk);color:#fff;border-color:var(--roseDk)}
 .svc-cards{padding:0 20px 24px;display:flex;flex-direction:column;gap:10px}
 .svc-card{
@@ -988,6 +1005,7 @@ function renderSvcTabs() {
 }
 
 function setSvcCat(cat) {
+  document.getElementById('svc-tabs').classList.add('interacted');
   if (activeSvcCat === cat && svcExpanded) {
     svcExpanded = false;
   } else {
