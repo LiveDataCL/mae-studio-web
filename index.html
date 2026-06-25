@@ -467,16 +467,17 @@ img{display:block;max-width:100%}
 .gallery-header{padding:28px 20px 0}
 .gal-scroll{
   display:flex;gap:12px;overflow-x:auto;
-  padding:16px 20px 24px;
+  padding:20px calc(50% - 100px) 28px;
   scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
 }
 .gal-scroll::-webkit-scrollbar{display:none}
 .gal-item{
-  flex:0 0 200px;scroll-snap-align:start;
+  flex:0 0 200px;scroll-snap-align:center;
   height:265px;border-radius:16px;overflow:hidden;
   position:relative;flex-shrink:0;
   box-shadow:0 4px 20px rgba(93,47,80,.10);
   background:var(--s3);
+  will-change:transform,opacity,filter;
 }
 .gal-item img{
   width:100%;height:100%;object-fit:cover;object-position:center;display:block;
@@ -1524,6 +1525,43 @@ document.addEventListener('keydown', e => {
     });
   },{threshold:.07,rootMargin:'0px 0px -24px 0px'});
   all.forEach(function(el){io.observe(el);});
+
+  /* 4. GALLERY FOCUS CAROUSEL — center card pops forward, sides dim & shrink */
+  (function(){
+    var gs=document.querySelector('.gal-scroll');
+    if(!gs) return;
+    var its=Array.from(gs.querySelectorAll('.gal-item'));
+    if(its.length<2) return;
+    var raf=null;
+    var TRANS='transform .28s cubic-bezier(.25,.46,.45,.94),opacity .28s ease,filter .28s ease';
+
+    function applyFocus(){
+      var sl=gs.scrollLeft;
+      var cx=sl+gs.clientWidth/2;
+      var iw=its[0].offsetWidth;
+      for(var i=0;i<its.length;i++){
+        var el=its[i];
+        var ic=el.offsetLeft+iw/2;
+        var d=Math.min(Math.abs(cx-ic)/(iw+12),1.5);
+        var sc=Math.max(0.82,1.05-d*0.155);  /* 1.05 center → 0.82 far */
+        var op=Math.max(0.38,1.00-d*0.44);   /* 1.00 center → 0.38 far */
+        var br=Math.max(0.48,1.00-d*0.38);   /* 1.00 center → 0.48 far */
+        el.style.transition=TRANS;
+        el.style.transform ='scale('+sc.toFixed(3)+')';
+        el.style.opacity   =op.toFixed(3);
+        el.style.filter    ='brightness('+br.toFixed(3)+')';
+        el.style.zIndex    =d<0.45?'2':'1';
+      }
+      raf=null;
+    }
+
+    function onScroll(){if(!raf)raf=requestAnimationFrame(applyFocus);}
+    gs.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});
+    /* First render after reveal settle */
+    setTimeout(applyFocus,700);
+  })();
+
 })();
 </script>
 </body>
